@@ -1,0 +1,12 @@
+require 'rake'
+
+desc "Compile ASN1"
+task :asn1 do
+  sh "asn1c module.asn1 -fincludes-quoted"
+  FileUtils.rm_rf Dir.glob('converter-sample.c')
+end
+
+desc "Run the program"
+task :compile do
+  sh "gcc -o prog -I. *.c"
+end
